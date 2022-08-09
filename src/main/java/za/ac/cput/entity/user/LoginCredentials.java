@@ -1,77 +1,46 @@
 package za.ac.cput.entity.user;
+
+import lombok.*;
+import org.hibernate.Hibernate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /*
 LoginCredentials.java
 Author:Kevin Lionel Mombo Ndinga(218180500)
-Date: 07 April 2022
+Date: 09 August 2022;
 */
+@Entity
+@Table(name="login_credentials")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+@Builder
 public class LoginCredentials {
+    @Id
+    @Column(name ="ID")
     private long id;
     private String email;
     private String password;
-    public long getId() {
-        return id;
-    }
-    private LoginCredentials(Builder builder) {
-        this.id = builder.id;
-        this.email = builder.email;
-        this.password = builder.password;
-    }
-    public String getEmail() {
-        return email;
-    }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
     @Override
-    public String toString() {
-        return "LoginCredentials{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        LoginCredentials loginCredentials = (LoginCredentials) o;
+        return false;
     }
-    public static class Builder {
-        private long id;
-        private String email;
-        private String password;
 
-        public Builder id(long id) {
-            this.id = id;
-            return this;
-        }
-        public Builder email(String email) {
-            this.email = email;
-            return this;
-        }
-        public Builder password(String password) {
-            this.password = password;
-            return this;
-        }
-        public Builder copy(LoginCredentials log){
-            this.id = log.id;
-            this.email = log.email;
-            this.password = log.password;
-            return this;
-
-        }
-
-        public LoginCredentials build() {
-            return new LoginCredentials(this);
-        }
-
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }
+
+
 
