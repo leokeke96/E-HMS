@@ -1,7 +1,7 @@
 package za.ac.cput.entity.user;
 
+
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,19 +28,7 @@ public class LoginCredentials {
     private String email;
     private String password;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        LoginCredentials loginCredentials = (LoginCredentials) o;
-        return false;
-    }
 
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
-}
 
 
 
